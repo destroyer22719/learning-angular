@@ -10,20 +10,22 @@ import {AuthGuard} from '../gaurds/auth/auth.guard'
 import { ConfirmationGuard } from '../gaurds/confirmation/confirmation.guard';
 import { UserService } from '../service/user/user.service';
 import {UserResolveGuard} from '../gaurds/UserResolve/user-resolve.guard'
+import {PlaceholderComponent} from '../components/placeholder/placeholder.component';
+
 const appRoutes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'blog', component: BlogComponent, canActivate:[AuthGuard]},
   {path:'about', component:AboutComponent},
   {path:'message', component:MessageListComponent, canDeactivate:[ConfirmationGuard]},
   {path: 'users', component:UsersComponent,
-  pathMatch:'prefix',
-  resolve:{
-    users:UserResolveGuard
-  },
-  canActivateChild:[AuthGuard],
+  // pathMatch:'prefix',
+  // resolve:{
+  //   users:UserResolveGuard
+  // },
+  // canActivateChild:[AuthGuard],
   children:[
     {path:':id', component: UserDetailsComponent},
-    // {path:'', component:PlaceholderComponent}
+    {path:'', component:PlaceholderComponent}
 ]},
   {path:'**',redirectTo:'/home', pathMatch:'full'}
 ]

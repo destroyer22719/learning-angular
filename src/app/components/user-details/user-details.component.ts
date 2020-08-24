@@ -19,13 +19,7 @@ export class UserDetailsComponent implements OnInit {
 
     this.users = this.userService.getUsers() 
     this.activatedRoute.params.subscribe((params)=>{
-      console.log(this)
-      this.user = this.users.filter((foundUser) => {
-        return foundUser.id === +params.id
-      })[0]
+      this.user = this.userService.getUserById(+params['id'])
     });
-    this.activatedRoute.queryParams.subscribe((qs) => {
-      console.log('Got the query string as ', qs)
-    })
   }
 }
