@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import {IUser} from '../../interfaces/user'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private rootUrl: string = 'https://jsonplaceholder.typicode.com/users'
   users: Array<IUser> = [
     {
       id: 1,
@@ -236,9 +239,12 @@ export class UserService {
       }
     }
   ]
-  constructor() { }
+  constructor(private http: HttpClient) { }
   getUsers():IUser[]{
-    return this.users
+    return this.users;
+  }
+  getUsersByREST(): Observable<IUser[]>{
+    return this.http.get<IUser[]>(this.rootUrl)
   }
   getUserById(id:number):IUser{
     return this.users.filter(user => user.id === id)[0]
