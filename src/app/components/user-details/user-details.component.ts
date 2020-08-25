@@ -19,7 +19,10 @@ export class UserDetailsComponent implements OnInit {
 
     this.users = this.userService.getUsers() 
     this.activatedRoute.params.subscribe((params)=>{
-      this.user = this.userService.getUserById(+params['id'])
+      // this.user = this.userService.getUserById(+params['id'])
+      this.userService.getUserByIdByREST(+params[`id`]).subscribe(
+        user => this.user = user
+      )
     });
   }
 }

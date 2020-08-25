@@ -249,4 +249,7 @@ export class UserService {
   getUserById(id:number):IUser{
     return this.users.filter(user => user.id === id)[0]
   }
+  getUserByIdByREST(id:number): Observable<IUser>{
+    return this.http.get<IUser>(`${this.rootUrl}/${id}`)
+  }
 }
