@@ -11,17 +11,21 @@ import { UserService} from '../../service/user/user.service'
 })
 export class UserDetailsComponent implements OnInit {
   user:any;
-  users:Array<IUser>
+  // users:Array<IUser>
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit(): void {
 
-    this.users = this.userService.getUsers() 
+    // this.users = this.userService.getUsers() 
+    this.activatedRoute.params
+    // .toPromise()
+    // .then(user => this.user = <IUser>user)
     this.activatedRoute.params.subscribe((params)=>{
-      // this.user = this.userService.getUserById(+params['id'])
       this.userService.getUserByIdByREST(+params[`id`]).subscribe(
-        user => this.user = user
+        user => this.user = user,
+        err => console.log('Got an error while fetching the user deails: ', err ),
+        () => alert('Fetch of user details completed! ')
       )
     });
   }
