@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   resolve:{
     users:UserResolveGuard
   },
-  canActivateChild:[AuthGuard],
+  // canActivateChild:[AuthGuard],
   children:[
     {path:':id', component: UserDetailsComponent},
     // {path:'', component:PlaceholderComponent}
