@@ -18,11 +18,11 @@ const appRoutes: Routes = [
   {path:'about', component:AboutComponent},
   {path:'message', component:MessageListComponent, canDeactivate:[ConfirmationGuard]},
   {path: 'users', component:UsersComponent,
-  pathMatch:'prefix',
+  // pathMatch:'prefix',
   // resolve:{
   //   users:UserResolveGuard
   // },
-  canActivateChild:[AuthGuard],
+  // canActivateChild:[AuthGuard],
   children:[
     {path:':id', component: UserDetailsComponent},
     {path:'', component:PlaceholderComponent}
