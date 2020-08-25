@@ -33,6 +33,7 @@ import { UserService } from './service/user/user.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

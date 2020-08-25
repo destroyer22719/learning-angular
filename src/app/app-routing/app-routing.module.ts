@@ -18,10 +18,10 @@ const appRoutes: Routes = [
   {path:'about', component:AboutComponent},
   {path:'message', component:MessageListComponent, canDeactivate:[ConfirmationGuard]},
   {path: 'users', component:UsersComponent,
-  // pathMatch:'prefix',
-  // resolve:{
-  //   users:UserResolveGuard
-  // },
+  pathMatch:'prefix',
+  resolve:{
+    users:UserResolveGuard
+  },
   // canActivateChild:[AuthGuard],
   children:[
     {path:':id', component: UserDetailsComponent},

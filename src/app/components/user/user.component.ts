@@ -9,7 +9,6 @@ export class UserComponent implements OnInit {
   @Input() user;
   constructor() { }
   ngOnInit(): void {
-    console.trace(this.user);
 
   }
 
