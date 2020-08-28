@@ -8,11 +8,13 @@ import { UserService } from 'src/app/service/user/user.service';
   providedIn: 'root'
 })
 export class UserResolveGuard implements Resolve<IUser[]> {
+  users:any
   constructor(private userService:UserService){}
   resolve(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): IUser[] {
-    return this.userService.getUsers();
+    this.userService.getUsersByREST().subscribe(users => users = this.users );
+    return this.users
   }
   
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {IUser} from '../../interfaces/user'
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -244,7 +244,8 @@ export class UserService {
     return this.users;
   }
   getUsersByREST(): Observable<IUser[]>{
-    return this.http.get<IUser[]>(this.rootUrl)
+    let headers = new HttpHeaders().set('Authorization', 'Bearer your access token here')
+    return this.http.get<IUser[]>(this.rootUrl, {headers})
   }
   getUserById(id:number):IUser{
     return this.users.filter(user => user.id === id)[0]
@@ -252,4 +253,14 @@ export class UserService {
   getUserByIdByREST(id:number): Observable<IUser>{
     return this.http.get<IUser>(`${this.rootUrl}/${id}`)
   }
+  createUser(user:IUser):Observable<IUser>{
+    return this.http.post<IUser>(this.rootUrl, user)
+  }
+  updateUser(user:IUser):Observable<IUser>{
+    return this.http.put<IUser>(`${this.rootUrl}/${user.id}`, user)
+  }
+  deleteUser(id:number):Observable<IUser>{
+    return this.http.delete<IUser>(`${this.rootUrl}/${id}`)
+  }
+
 }

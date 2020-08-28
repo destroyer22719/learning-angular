@@ -9,14 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users: Array<IUser>
+  users: any
   constructor(private userService: UserService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.users = this.userService.getUsers()
-    // this.activatedRoute.data.forEach(data => {
-    //   this.users = data.users
-    // })
+    this.userService.getUsersByREST().subscribe(user => this.users = user)
   }
 
 }

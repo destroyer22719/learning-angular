@@ -11,6 +11,7 @@ import { ConfirmationGuard } from '../gaurds/confirmation/confirmation.guard';
 import { UserService } from '../service/user/user.service';
 import {UserResolveGuard} from '../gaurds/UserResolve/user-resolve.guard'
 import {PlaceholderComponent} from '../components/placeholder/placeholder.component';
+import {UserDetailResolveGuard} from '../gaurds/user-detail-resolve.guard'
 
 const appRoutes: Routes = [
   {path:'home', component:HomeComponent},
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
   },
   // canActivateChild:[AuthGuard],
   children:[
-    {path:':id', component: UserDetailsComponent},
+    {path:':id', component: UserDetailsComponent, resolve:{hello: UserDetailResolveGuard}},
     {path:'', component:PlaceholderComponent}
 ]},
   {path:'**',redirectTo:'/home', pathMatch:'full'}
