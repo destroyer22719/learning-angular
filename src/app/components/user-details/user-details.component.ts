@@ -10,7 +10,8 @@ import { UserService} from '../../service/user/user.service'
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit {
-  user:any;
+  user:IUser;
+  posts:any;
   // users:Array<IUser>
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
@@ -47,11 +48,13 @@ export class UserDetailsComponent implements OnInit {
   deleteUser(){
     this.user.name = 'Nathan Cai';
     this.user.email = 'nathancai1031@gmail.com' 
-    this.userService.deleteUser(this.user).subscribe(
+    this.userService.deleteUser(+this.user).subscribe(
       user => console.log('a new user was deleted'),
       err => console.log(`got an error as ${err}`),
       () => console.log('Deletion of a user completed!')
     )
   }
-  getUserPosts(){}
+  getUserPosts(){
+    this.posts = this.userService.getUserPosts(this.user.id)
+  }
 }

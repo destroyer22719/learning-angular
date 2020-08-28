@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {IUser} from '../../interfaces/user'
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private rootUrl: string = 'https://jsonplaceholder.typicode.com/users'
+  private rootPostsUrl: string = 'https://jsonplaceholder.typicode.com/posts'
+
   users: Array<IUser> = [
     {
       id: 1,
@@ -262,5 +264,8 @@ export class UserService {
   deleteUser(id:number):Observable<IUser>{
     return this.http.delete<IUser>(`${this.rootUrl}/${id}`)
   }
-
+  getUserPosts(id:number): Observable<any>{
+    let params = new HttpParams().set('userId', id.toString())
+    return this.http.get(this.rootPostsUrl, {params})
+  }
 }
