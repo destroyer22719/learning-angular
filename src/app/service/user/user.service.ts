@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import {IUser} from '../../interfaces/user'
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/catch';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -247,13 +251,27 @@ export class UserService {
   }
   getUsersByREST(): Observable<IUser[]>{
     let headers = new HttpHeaders().set('Authorization', 'Bearer your access token here')
-    return this.http.get<IUser[]>(this.rootUrl, {headers})
+    return this.http.get<any>(this.rootUrl, {headers})
+    .map(users => {
+      return users.map(user => {
+        return {
+          id: user.id,
+          name: user.name,
+          email:user.email
+        }
+      })
+    })
   }
   getUserById(id:number):IUser{
     return this.users.filter(user => user.id === id)[0]
   }
-  getUserByIdByREST(id:number): Observable<IUser>{
+  getUserByIdByREST(id:number): Observable<IUser> | any{
     return this.http.get<IUser>(`${this.rootUrl}/${id}`)
+    // .retry(3)
+    // .catch(err => {
+    //   console.log(err)
+    //   return err
+    // })
   }
   createUser(user:IUser):Observable<IUser>{
     return this.http.post<IUser>(this.rootUrl, user)
