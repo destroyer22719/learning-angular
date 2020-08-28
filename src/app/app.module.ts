@@ -15,6 +15,9 @@ import { PlaceholderComponent } from './components/placeholder/placeholder.compo
 import { MessageComponent } from './components/message/message.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { UserService } from './service/user/user.service';
+import { ParentComponent } from './components/parent/parent.component';
+import { OneComponent } from './components/one/one.component';
+import { TwoComponent } from './components/two/two.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { UserService } from './service/user/user.service';
     UserComponent,
     PlaceholderComponent,
     MessageComponent,
-    MessageListComponent
+    MessageListComponent,
+    ParentComponent,
+    OneComponent,
+    TwoComponent
   ],
   imports: [
     BrowserModule,

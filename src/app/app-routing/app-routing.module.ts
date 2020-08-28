@@ -12,6 +12,7 @@ import { UserService } from '../service/user/user.service';
 import {UserResolveGuard} from '../gaurds/UserResolve/user-resolve.guard'
 import {PlaceholderComponent} from '../components/placeholder/placeholder.component';
 import {UserDetailResolveGuard} from '../gaurds/user-detail-resolve.guard'
+import { ParentComponent } from '../components/parent/parent.component';
 
 const appRoutes: Routes = [
   {path:'home', component:HomeComponent},
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   children:[
     {path:':id', component: UserDetailsComponent, resolve:{hello: UserDetailResolveGuard}},
     {path:'', component:PlaceholderComponent}
-]},
+  ]},
+  {path:'parent', component:ParentComponent},
   {path:'**',redirectTo:'/home', pathMatch:'full'}
 ]
 
