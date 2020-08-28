@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/service/user/user.service';
 
 @Component({
   selector: 'app-two',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TwoComponent implements OnInit {
 
-  constructor() { }
+  prop:string;
+
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    this.userService.propChanged.subscribe(prop => this.prop = prop);
   }
 
 }

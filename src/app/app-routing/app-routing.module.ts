@@ -13,6 +13,7 @@ import {UserResolveGuard} from '../gaurds/UserResolve/user-resolve.guard'
 import {PlaceholderComponent} from '../components/placeholder/placeholder.component';
 import {UserDetailResolveGuard} from '../gaurds/user-detail-resolve.guard'
 import { ParentComponent } from '../components/parent/parent.component';
+import { BuiltInStrDirComponent } from '../components/built-in-str-dir/built-in-str-dir.component';
 
 const appRoutes: Routes = [
   {path:'home', component:HomeComponent},
@@ -30,6 +31,8 @@ const appRoutes: Routes = [
     {path:'', component:PlaceholderComponent}
   ]},
   {path:'parent', component:ParentComponent},
+  {path:'str-dir', component:BuiltInStrDirComponent},
+
   {path:'**',redirectTo:'/home', pathMatch:'full'}
 ]
 

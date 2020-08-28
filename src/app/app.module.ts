@@ -18,6 +18,7 @@ import { UserService } from './service/user/user.service';
 import { ParentComponent } from './components/parent/parent.component';
 import { OneComponent } from './components/one/one.component';
 import { TwoComponent } from './components/two/two.component';
+import { BuiltInStrDirComponent } from './components/built-in-str-dir/built-in-str-dir.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TwoComponent } from './components/two/two.component';
     MessageListComponent,
     ParentComponent,
     OneComponent,
-    TwoComponent
+    TwoComponent,
+    BuiltInStrDirComponent
   ],
   imports: [
     BrowserModule,
