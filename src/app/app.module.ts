@@ -19,6 +19,7 @@ import { ParentComponent } from './components/parent/parent.component';
 import { OneComponent } from './components/one/one.component';
 import { TwoComponent } from './components/two/two.component';
 import { BuiltInStrDirComponent } from './components/built-in-str-dir/built-in-str-dir.component';
+import { BuiltInAttrDirComponent } from './components/built-in-attr-dir/built-in-attr-dir.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { BuiltInStrDirComponent } from './components/built-in-str-dir/built-in-s
     ParentComponent,
     OneComponent,
     TwoComponent,
-    BuiltInStrDirComponent
+    BuiltInStrDirComponent,
+    BuiltInAttrDirComponent
   ],
   imports: [
     BrowserModule,

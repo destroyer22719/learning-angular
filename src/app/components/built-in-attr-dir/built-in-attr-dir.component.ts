@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-built-in-attr-dir',
+  templateUrl: './built-in-attr-dir.component.html',
+  styleUrls: ['./built-in-attr-dir.component.css']
+})
+export class BuiltInAttrDirComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
