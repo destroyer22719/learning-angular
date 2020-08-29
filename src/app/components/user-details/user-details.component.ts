@@ -34,6 +34,7 @@ export class UserDetailsComponent implements OnInit {
       err => console.log(`got an error as ${err}`),
       () => console.log('Creation of a user completed!')
     )
+    this.userService.getUsersByREST().subscribe(users => console.log(users));
   }
   updateUser(){
     this.user.name = 'Nathan Cai';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {IUser} from '../../interfaces/user'
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/catch';
@@ -13,7 +13,7 @@ export class UserService {
   private rootUrl: string = 'https://jsonplaceholder.typicode.com/users'
   private rootPostsUrl: string = 'https://jsonplaceholder.typicode.com/posts'
   private prop:string = 'foo';
-  public propChanged: BehaviorSubject<string> = new BehaviorSubject<string>(this.prop)
+  public propChanged: Subject<string> = new Subject<string>()
   users: Array<IUser> = [
     {
       id: 1,
