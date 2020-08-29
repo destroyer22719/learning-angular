@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./built-in-attr-dir.component.css']
 })
 export class BuiltInAttrDirComponent implements OnInit {
-
+  gradientToggle:boolean
   constructor() { }
 
   ngOnInit(): void {
+    this.gradientToggle = true
   }
 
 }

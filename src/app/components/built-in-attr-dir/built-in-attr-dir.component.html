@@ -1,1 +1,14 @@
-<p>built-in-attr-dir works!</p>
+<h4>
+    NgClass and NgStye
+</h4>
+
+<button class="btn btn-primary" (click)="gradientToggle = !gradientToggle">Toggle Gradient</button>
+<div 
+[ngClass]="gradientToggle ? 'blue-gradient': 'red-gradient'"
+[ngStyle]="{color:'white', 'font-family':'Courier'}"
+>
+    This is a div
+</div>
+<br>
+<h4>NgNonBindable</h4>
+<p ngNonBindable>The text is the user's name can be printed on to the screen in angular using the string interpolation syntax: {{userName}}</p>
