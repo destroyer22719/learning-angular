@@ -1,2 +1,16 @@
 <app-one></app-one>
 <app-two></app-two>
+<hr>
+<h4>Pipes</h4>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <p>Date Pipes: {{dateToday | date}}</p>
+    </li>
+    <li class="list-group-item">
+        <p>Date Without Pipes: {{dateToday}}</p>
+    </li>
+    <li class="list-group-item">
+        <p>Date With Pipes and Params: {{dateToday| date:'full' | lowercase}}</p>
+    </li>
+</ul>
