@@ -13,7 +13,14 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.userService.getUsersByREST().subscribe(user => this.users = user)
+    
+    this.userService.getUsersByREST().subscribe
+    (
+      user => this.users = user, 
+      err => console.log(err),
+      () => {console.log(this.users)}
+    
+    )
   }
 
 }

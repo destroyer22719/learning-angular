@@ -260,16 +260,8 @@ export class UserService {
   getUsersByREST(): Observable<IUser[]>{
     let headers = new HttpHeaders().set('Authorization', 'Bearer your access token here')
     return this.http.get<any>(this.rootUrl, {headers})
-    .map(users => {
-      return users.map(user => {
-        return {
-          id: user.id,
-          name: user.name,
-          email:user.email
-        }
-      })
-    })
-  }
+    }
+  
   getUserById(id:number):IUser{
     return this.users.filter(user => user.id === id)[0]
   }
