@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./directive-host.component.css']
 })
 export class DirectiveHostComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {

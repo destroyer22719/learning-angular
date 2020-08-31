@@ -10,7 +10,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-import { UserComponent } from './components/user-details/user/user.component';
+import { UserComponent } from './components/user/user.component';
 import { PlaceholderComponent } from './components/placeholder/placeholder.component';
 import { MessageComponent } from './components/message/message.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
@@ -22,6 +22,7 @@ import { BuiltInStrDirComponent } from './components/built-in-str-dir/built-in-s
 import { BuiltInAttrDirComponent } from './components/built-in-attr-dir/built-in-attr-dir.component';
 import { ChangeCaseDirective } from './directives/changeCase/change-case.directive';
 import { DirectiveHostComponent } from './components/directive-host/directive-host.component';
+import { UnlessDirective } from './directive/unless/unless.directive';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DirectiveHostComponent } from './components/directive-host/directive-ho
     BuiltInStrDirComponent,
     BuiltInAttrDirComponent,
     ChangeCaseDirective,
-    DirectiveHostComponent
+    DirectiveHostComponent,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
