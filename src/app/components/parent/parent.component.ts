@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user/user.service';
 import { IUser } from 'src/app/interfaces/user';
-
+import {Laptop} from '../../classes/laptop'
 @Component({
   selector: 'app-parent',
   templateUrl: './parent.component.html',
@@ -15,7 +15,9 @@ export class ParentComponent implements OnInit {
 
   ngOnInit(): void {
     this.dateToday = new Date();
-    this.users = this.userService.getUsers()
+    this.users = this.userService.getUsers();
+    let laptop:Laptop = new Laptop;
+    console.log(laptop['stickers'])
   }
   addUser(){
     this.userService.addUser({

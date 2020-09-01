@@ -1,3 +1,5 @@
-export function Sticker(target){
-
+export function Sticker(configuration){
+    return function(target){
+        target.prototype.stickers =  configuration.stickers
+    }
 }
