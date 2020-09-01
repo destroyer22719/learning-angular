@@ -7,6 +7,9 @@ import {Laptop} from '../../classes/laptop'
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.css']
 })
+@HookLogger({
+  hooks:['ngOnChanges']
+})
 export class ParentComponent implements OnInit {
   dateToday:Date;
   users:IUser[];

@@ -3,3 +3,6 @@ export function Sticker(configuration){
         target.prototype.stickers =  configuration.stickers
     }
 }
+export function HookLogger(configuration? ){
+    
+}
