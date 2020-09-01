@@ -24,6 +24,7 @@ import { ChangeCaseDirective } from './directives/changeCase/change-case.directi
 import { DirectiveHostComponent } from './components/directive-host/directive-host.component';
 import { UnlessDirective } from './directives/unless/unless.directive';
 import { AppendorPipe } from './pipes/appendor/appendor.pipe';
+import { FilterPipe } from './pipes/filter/filter.pipe';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { AppendorPipe } from './pipes/appendor/appendor.pipe';
     DirectiveHostComponent,
     UnlessDirective,
     AppendorPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

@@ -14,3 +14,13 @@
         <p>Date With Pipes and Params: {{dateToday| date:'full' | lowercase}}</p>
     </li>
 </ul>
+<h4>
+    Pure and Impure Pipes
+</h4>
+<button class="btn btn-primary" (click)="addUser()">Add User</button>
+<input type="text" [(ngModel)]="filterIdType">
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let user of users| filter : filterIdType">
+        <div class="alert alert-success" role="alert">UserId:{{user.id}}<br>User Name: {{user.name}}</div>
+    </li>
+</ul>

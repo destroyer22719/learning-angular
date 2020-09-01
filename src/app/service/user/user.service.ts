@@ -286,4 +286,7 @@ export class UserService {
     let params = new HttpParams().set('userId', id.toString())
     return this.http.get(this.rootPostsUrl, {params})
   }
+  addUser(user:IUser){
+    this.users.push(user)
+  }
 }
