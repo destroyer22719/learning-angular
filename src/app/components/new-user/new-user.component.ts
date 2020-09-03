@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent implements OnInit {
+  communicationMods:string[];
+  genders: string[];
+
 
   constructor() { }
 
   ngOnInit(): void {
+    this.genders=['Male','Female','Other'];
+    this.communicationMods = ['Phone','Email']
   }
   submit(userForm){
     console.log("form submitted", userForm)

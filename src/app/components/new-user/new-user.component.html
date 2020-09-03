@@ -22,10 +22,30 @@
             <input type="text" name="phone" class="form-control" ngModel></div>
         <div class="form-group">
             <label for="website">Website</label>
-            <input type="text" name="website" class="form-control" ngModel></div>
+            <input type="text" name="website" class="form-control" ngModel>
+        </div>
+        <div class="custom-radio">
+            <label *ngFor="let gender of genders" for="gender">
+                <input name="gender" class="form-check-input" [value]="gender" ngModel type="radio"><br>
+                {{gender}}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="communcationMode">Communication Options</label>
+            <select name="communicationMode" class="form-control" ngModel>
+                <option value=""></option>
+                <option *ngFor="let commOpt of communicationMods" value="commOpt">{{commOpt}}</option>
+            </select>
+        </div>
+        <div class="checkbox-light">
+            <label for="agreement">
+                <input name="agreement" class="form-check-input" ngModel type="checkbox"><br>
+                I agree to the terms and services
+            </label>
+        </div>
         <hr>
         <pre>
-
+            {{userForm.value | json}}
         </pre>
         <hr>
         <button class="btn btn-primary"[disabled]="userForm.invalid" type="submit">Submit</button>
