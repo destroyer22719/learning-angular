@@ -17,6 +17,7 @@ import { BuiltInStrDirComponent } from '../components/built-in-str-dir/built-in-
 import { BuiltInAttrDirComponent } from '../components/built-in-attr-dir/built-in-attr-dir.component';
 import { DirectiveHostComponent } from '../components/directive-host/directive-host.component';
 import { NewUserComponent } from '../components/new-user/new-user.component';
+import { NewUserReactiveComponent } from '../components/new-user-reactive/new-user-reactive.component';
 
 const appRoutes: Routes = [
   {path:'home', component:HomeComponent},
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   {path:'str-dir', component:BuiltInStrDirComponent},
   {path:'attr-dir', component:BuiltInAttrDirComponent},
   {path:'directives', component:DirectiveHostComponent},
+  {path:'new-user-reactive', component:NewUserReactiveComponent},
   {path:'**',redirectTo:'/home', pathMatch:'full'}
 ]
 

@@ -26,6 +26,7 @@ import { UnlessDirective } from './directives/unless/unless.directive';
 import { AppendorPipe } from './pipes/appendor/appendor.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { NewUserReactiveComponent } from './components/new-user-reactive/new-user-reactive.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     AppendorPipe,
     FilterPipe,
     NewUserComponent,
+    NewUserReactiveComponent,
   ],
   imports: [
     BrowserModule,
