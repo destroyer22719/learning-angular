@@ -27,7 +27,7 @@ import { AppendorPipe } from './pipes/appendor/appendor.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { NewUserReactiveComponent } from './components/new-user-reactive/new-user-reactive.component';
-
+import {ReactiveFormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ import { NewUserReactiveComponent } from './components/new-user-reactive/new-use
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
