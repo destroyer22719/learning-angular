@@ -24,6 +24,48 @@
             <label for="website">Website</label>
             <input type="text" name="website" class="form-control" ngModel>
         </div>
+        <div ngModelGroup="address">
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input ngModel type="text" name="street" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="suit">Suit</label>
+                <input ngModel type="text" name="suite" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input ngModel type="text" name="City" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Zip code</label>
+                <input ngModel type="text" name="zipcode" class="form-control">
+            </div>
+        </div>
+        <div ngModelGroup="company">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input ngModel type="text" name="Name" class="form-control">
+            </div>
+            <div ngModelGroup="geo">
+                <div class="form-group">
+                    <label for="lat">Latitude</label>
+                    <input ngModel type="text" name="lat" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="lng">Longitude</label>
+                    <input ngModel type="text" name="lng" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="catchPhrase">Catchphrase</label>
+                <input ngModel type="text" name="catchPhrase" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="bs">BS</label>
+                <input ngModel type="text" name="bs" class="form-control">
+            </div>
+        </div>
         <div class="custom-radio">
             <label *ngFor="let gender of genders" for="gender">
                 <input name="gender" class="form-check-input" [value]="gender" ngModel type="radio"><br>
