@@ -1,6 +1,6 @@
 <div class="container">
     <h3>New User Reactive Form</h3>
-    <form [ngForm]="userForm" (ngSubmit)="submit()">
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" formControlName="name" class="form-control">
@@ -21,7 +21,7 @@
             <label for="website">website</label>
             <input type="text" formControlName="website" class="form-control">
         </div>
-        <fieldset>
+        <fieldset formGroupName="address">
             <legend>Address</legend>
             <div class="form-group">
                 <label for="street">Street</label>
@@ -40,7 +40,7 @@
                 <input type="text" formControlName="zipcode" class="form-control">
             </div>
 
-            <fieldset>
+            <fieldset formGroupName="geo">
                 <legend>Geo</legend>
                 <div class="form-group">
                     <label for="lat">Lat</label>
@@ -52,11 +52,11 @@
                 </div>
             </fieldset>
         </fieldset>
-        <fieldset>
+        <fieldset formGroupName="company">
             <legend>Company</legend>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" formControlName="" class="form-control">
+                <input type="text" formControlName="name" class="form-control">
             </div>
             <div class="form-group">
                 <label for="catchPhrase">CatchPhrase</label>
