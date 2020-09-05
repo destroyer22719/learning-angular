@@ -56,5 +56,7 @@ export class NewUserReactiveComponent implements OnInit {
   deleteHobby(i){
     (<FormArray>this.userForm.get('hobbies')).removeAt(i)
   }
-
+  resetForm(){
+    this.userForm.reset();
+  }
 }
