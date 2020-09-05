@@ -13,6 +13,7 @@
         <div class="form-group">
             <label for="username">username</label>
             <input type="text" formControlName="username" class="form-control">
+            <!-- <p *ngIf="username.pending">Validating...</p> -->
             <div class="alert alert-danger" *ngIf="username.touched &&  username.invalid">
                 <p *ngIf="username.errors.unique">Username must be unique</p>
             </div>
