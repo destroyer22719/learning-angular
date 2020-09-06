@@ -10,22 +10,52 @@ import { UserService} from '../../service/user/user.service'
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit {
-  user:any;
-  users:Array<IUser>
+  user:IUser;
+  posts:any;
+  // users:Array<IUser>
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit(): void {
 
-    this.users = this.userService.getUsers() 
-    this.activatedRoute.params.subscribe((params)=>{
-      console.log(this)
-      this.user = this.users.filter((foundUser) => {
-        return foundUser.id === +params.id
-      })[0]
-    });
-    this.activatedRoute.queryParams.subscribe((qs) => {
-      console.log('Got the query string as ', qs)
-    })
+    this.activatedRoute.data.subscribe((res) => { this.user = res.hello})
+  //   this.activatedRoute.params.subscribe((params)=>{
+  //     this.userService.getUserByIdByREST(+params[`id`]).subscribe(
+  //       user => this.user = user,
+  //       err => console.log('Got an error while fetching the user deails: ', err ),
+  //       () => console.log('Fetch of user details completed! ')
+  //     )
+  //   });
+  }
+  createUser(){
+    this.user.id = null; 
+    this.userService.createUser(this.user).subscribe(
+      user => console.log('a new user was created with an id: ', user.id),
+      err => console.log(`got an error as ${err}`),
+      () => console.log('Creation of a user completed!')
+    )
+    this.userService.getUsersByREST().subscribe(users => console.log(users));
+  }
+  updateUser(){
+    this.user.name = 'Nathan Cai';
+    this.user.email = 'nathancai1031@gmail.com' 
+    this.userService.updateUser(this.user).subscribe(
+      user => console.log('a new user was updated'),
+      err => console.log(`got an error as ${err}`),
+      () => console.log('Creation of a user completed!')
+    )
+  }
+  
+  deleteUser(){
+    this.user.name = 'Nathan Cai';
+    this.user.email = 'nathancai1031@gmail.com' 
+    this.userService.deleteUser(+this.user).subscribe(
+      user => console.log('a new user was deleted'),
+      err => console.log(`got an error as ${err}`),
+      () => console.log('Deletion of a user completed!')
+    )
+  }
+  getUserPosts(){
+    this.posts = this.userService.getUserPosts(this.user.id)
   }
 }

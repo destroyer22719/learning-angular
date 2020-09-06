@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
-
+import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +15,19 @@ import { PlaceholderComponent } from './components/placeholder/placeholder.compo
 import { MessageComponent } from './components/message/message.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { UserService } from './service/user/user.service';
+import { ParentComponent } from './components/parent/parent.component';
+import { OneComponent } from './components/one/one.component';
+import { TwoComponent } from './components/two/two.component';
+import { BuiltInStrDirComponent } from './components/built-in-str-dir/built-in-str-dir.component';
+import { BuiltInAttrDirComponent } from './components/built-in-attr-dir/built-in-attr-dir.component';
+import { ChangeCaseDirective } from './directives/changeCase/change-case.directive';
+import { DirectiveHostComponent } from './components/directive-host/directive-host.component';
+import { UnlessDirective } from './directives/unless/unless.directive';
+import { AppendorPipe } from './pipes/appendor/appendor.pipe';
+import { FilterPipe } from './pipes/filter/filter.pipe';
+import { NewUserComponent } from './components/new-user/new-user.component';
+import { NewUserReactiveComponent } from './components/new-user-reactive/new-user-reactive.component';
+import {ReactiveFormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -28,11 +41,26 @@ import { UserService } from './service/user/user.service';
     UserComponent,
     PlaceholderComponent,
     MessageComponent,
-    MessageListComponent
+    MessageListComponent,
+    ParentComponent,
+    OneComponent,
+    TwoComponent,
+    BuiltInStrDirComponent,
+    BuiltInAttrDirComponent,
+    ChangeCaseDirective,
+    DirectiveHostComponent,
+    UnlessDirective,
+    AppendorPipe,
+    FilterPipe,
+    NewUserComponent,
+    NewUserReactiveComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

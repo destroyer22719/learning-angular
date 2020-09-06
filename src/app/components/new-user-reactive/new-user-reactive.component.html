@@ -1,0 +1,89 @@
+<div class="container">
+    <h3>New User Reactive Form</h3>
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" class="form-control">
+            <div class="alert alert-danger mt-2" *ngIf="name.touched && name.invalid">
+                <p *ngIf="name.errors.required">Name is required</p>
+                <p *ngIf="name.errors.minlength">Name must be at least {{name.errors.minlength.requiredLength}} characters long</p>
+                <p *ngIf="name.errors.pattern">Name must be John Doe</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username">username</label>
+            <input type="text" formControlName="username" class="form-control">
+            <!-- <p *ngIf="username.pending">Validating...</p> -->
+            <div class="alert alert-danger" *ngIf="username.touched &&  username.invalid">
+                <p *ngIf="username.errors.unique">Username must be unique</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" formControlName="email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="phone">phone</label>
+            <input type="text" formControlName="phone" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="website">website</label>
+            <input type="text" formControlName="website" class="form-control">
+        </div>
+        <fieldset formGroupName="address">
+            <legend>Address</legend>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" formControlName="street" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="suite">suite</label>
+                <input type="text" formControlName="suite" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" formControlName="city" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Zipcode</label>
+                <input type="text" formControlName="zipcode" class="form-control">
+            </div>
+
+            <fieldset formGroupName="geo">
+                <legend>Geo</legend>
+                <div class="form-group">
+                    <label for="lat">Lat</label>
+                    <input type="text" formControlName="lat" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="lng">Lng</label>
+                    <input type="text" formControlName="lng" class="form-control">
+                </div>
+            </fieldset>
+        </fieldset>
+        <fieldset formGroupName="company">
+            <legend>Company</legend>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="catchPhrase">CatchPhrase</label>
+                <input type="text" formControlName="catchPhrase" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="bs">BS</label>
+                <input type="text" formControlName="bs" class="form-control">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Hobbies| <span (click)="addHobby()">+</span></legend>
+            <div class="input-group" *ngFor="let hobbyControl of getArrayControls(); let i = index">
+                <input type="text" placeholder="Hobby" [formControlName]="i" class="form-control">
+                <span class="input-group-text" (click)="deleteHobby(i)">-</span>
+            </div>
+        </fieldset>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-warning" type="button" (click)="resetForm()">Reset</button>
+    </form>
+</div>

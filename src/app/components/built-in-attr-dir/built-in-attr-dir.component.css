@@ -1,0 +1,14 @@
+.blue-gradient{
+    background: lightblue;
+    width:200px;
+    height:100px;
+    line-height: 100px;
+    text-align:center;
+}
+.red-gradient{
+    background:lightcoral;
+    width:200px;
+    height:100px;
+    line-height: 100px;
+    text-align:center;
+}

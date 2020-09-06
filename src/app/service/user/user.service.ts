@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
 import {IUser} from '../../interfaces/user'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/catch';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private rootUrl: string = 'https://jsonplaceholder.typicode.com/users'
+  private rootPostsUrl: string = 'https://jsonplaceholder.typicode.com/posts'
+  private prop:string = 'foo';
+  public propChanged: Subject<string> = new Subject<string>()
   users: Array<IUser> = [
     {
       id: 1,
@@ -236,11 +246,47 @@ export class UserService {
       }
     }
   ]
-  constructor() { }
-  getUsers():IUser[]{
-    return this.users
+  constructor(private http: HttpClient) { }
+  getProp():string{
+    return this.prop;
   }
+  setProp(prop:string):void{
+    this.prop = prop;
+    this.propChanged.next(this.prop)
+  }
+  getUsers():IUser[]{
+    return this.users;
+  }
+  getUsersByREST(): Observable<IUser[]>{
+    let headers = new HttpHeaders().set('Authorization', 'Bearer your access token here')
+    return this.http.get<any>(this.rootUrl, {headers})
+    }
+  
   getUserById(id:number):IUser{
     return this.users.filter(user => user.id === id)[0]
+  }
+  getUserByIdByREST(id:number): Observable<IUser> | any{
+    return this.http.get<IUser>(`${this.rootUrl}/${id}`)
+    // .retry(3)
+    // .catch(err => {
+    //   console.log(err)
+    //   return err
+    // })
+  }
+  createUser(user:IUser):Observable<IUser>{
+    return this.http.post<IUser>(this.rootUrl, user)
+  }
+  updateUser(user:IUser):Observable<IUser>{
+    return this.http.put<IUser>(`${this.rootUrl}/${user.id}`, user)
+  }
+  deleteUser(id:number):Observable<IUser>{
+    return this.http.delete<IUser>(`${this.rootUrl}/${id}`)
+  }
+  getUserPosts(id:number): Observable<any>{
+    let params = new HttpParams().set('userId', id.toString())
+    return this.http.get(this.rootPostsUrl, {params})
+  }
+  addUser(user:IUser){
+    this.users.push(user)
   }
 }

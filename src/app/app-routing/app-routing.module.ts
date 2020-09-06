@@ -10,6 +10,15 @@ import {AuthGuard} from '../gaurds/auth/auth.guard'
 import { ConfirmationGuard } from '../gaurds/confirmation/confirmation.guard';
 import { UserService } from '../service/user/user.service';
 import {UserResolveGuard} from '../gaurds/UserResolve/user-resolve.guard'
+import {PlaceholderComponent} from '../components/placeholder/placeholder.component';
+import {UserDetailResolveGuard} from '../gaurds/user-detail-resolve.guard'
+import { ParentComponent } from '../components/parent/parent.component';
+import { BuiltInStrDirComponent } from '../components/built-in-str-dir/built-in-str-dir.component';
+import { BuiltInAttrDirComponent } from '../components/built-in-attr-dir/built-in-attr-dir.component';
+import { DirectiveHostComponent } from '../components/directive-host/directive-host.component';
+import { NewUserComponent } from '../components/new-user/new-user.component';
+import { NewUserReactiveComponent } from '../components/new-user-reactive/new-user-reactive.component';
+
 const appRoutes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'blog', component: BlogComponent, canActivate:[AuthGuard]},
@@ -22,9 +31,15 @@ const appRoutes: Routes = [
   },
   // canActivateChild:[AuthGuard],
   children:[
-    {path:':id', component: UserDetailsComponent},
-    // {path:'', component:PlaceholderComponent}
-]},
+    {path:':id', component: UserDetailsComponent, resolve:{hello: UserDetailResolveGuard}},
+    {path:'', component:PlaceholderComponent}
+  ]},
+  {path:'parent', component:ParentComponent},
+  {path:'new-user', component:NewUserComponent},
+  {path:'str-dir', component:BuiltInStrDirComponent},
+  {path:'attr-dir', component:BuiltInAttrDirComponent},
+  {path:'directives', component:DirectiveHostComponent},
+  {path:'new-user-reactive', component:NewUserReactiveComponent},
   {path:'**',redirectTo:'/home', pathMatch:'full'}
 ]
 
